@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CloudComponent } from './cloud/cloud.component';
@@ -14,7 +14,8 @@ import {TagCloudModule} from 'angular-tag-cloud-module';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        TagCloudModule
+        TagCloudModule,
+        HttpClientModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

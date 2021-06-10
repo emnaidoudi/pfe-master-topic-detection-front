@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-cloud',
@@ -9,24 +10,32 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 export class CloudComponent implements OnInit {
 
   options: CloudOptions = {
-    // if width is between 0 and 1 it will be set to the width of the upper element multiplied by the value
     width: 1000,
-    // if height is between 0 and 1 it will be set to the height of the upper element multiplied by the value
     height: 400,
-    overflow: false,
+    overflow: true,
   };
 
-  data: CloudData[] = [
-    {text: 'Weight-8-link-color', weight: 8, link: 'https://google.com', color: '#ffaaee'},
-    {text: 'Weight-10-link', weight: 10, link: 'https://google.com', tooltip: 'display a tooltip'},
-    // ...
-  ];
+  data: CloudData[] = [];
+  value: string;
 
-  constructor() { }
+  constructor(private srv: DataService) { }
 
   ngOnInit() {
+    this.getWords();
   }
 
+  getWords() {
+    this.srv.getWords().subscribe(data => {
+      const wordData: CloudData[] = data["word-cloud"];
+      this.data = wordData;
+      console.log(this.data);
+    }
+  );
+  }
 
+  onEnter(idtopic , value: string) {
+    this.value = value; console.log(this.value);
+    this.srv.update_topic_name(idtopic, value).subscribe();
+  }
 
 }

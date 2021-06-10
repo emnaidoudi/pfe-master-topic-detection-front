@@ -1,8 +1,14 @@
-<div>
+<div *ngFor="let words of data">
+<h1>{{words[words.length-1]["assigned_name"]}}</h1>
   <angular-tag-cloud
-    [data]="data"
+    [data]="words.slice(0,words.length-1)"
     [width]="options.width"
     [height]="options.height"
     [overflow]="options.overflow">
   </angular-tag-cloud>
-</div>
+  <input #box (keyup.enter)="onEnter( words[words.length-1]['idtopic'],box.value)">
+ </div>
+
+
+<!--<angular-tag-cloud [config]="options" [data]="data"></angular-tag-cloud>-->
+
