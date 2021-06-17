@@ -136,4 +136,44 @@ mat-label.label-text {
   background-size: cover;
 }
 
+.input-topic {
+  width: 92%;
+  margin-left: 3%;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: blue;
+  padding: 1% 1% 0.5% 1%;
+  margin-bottom: 1%;
+  background: rgba(255,255,255,.5);
+
+}
+
+.input-topic:focus{
+  border-width: 0 0 2px;
+  color: black;
+}
+
+.topic_name{
+  margin: 2%;
+  font-size: 20px;
+  font-family: monospace;
+  color: #925f90;
+  text-shadow: 0.5px 0.5px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.div-container{
+  display: inline-block;
+  background: white;
+  padding: 0.2%;
+  border: 1px solid blue;
+  border-radius: 5px;
+  margin: 1% 0.5%;
+  cursor: pointer;
+  box-shadow: 3px 1px 4px 1px #888888;
+}
+
+.div-container:hover{
+  background: rgba(255, 240, 254);
+}
 

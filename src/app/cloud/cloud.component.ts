@@ -10,9 +10,9 @@ import { DataService } from '../data.service';
 export class CloudComponent implements OnInit {
 
   options: CloudOptions = {
-    width: 1000,
-    height: 400,
-    overflow: true,
+    width: 510,
+    height: 200,
+    overflow: false,
   };
 
   data: CloudData[] = [];
@@ -24,18 +24,19 @@ export class CloudComponent implements OnInit {
     this.getWords();
   }
 
+
   getWords() {
     this.srv.getWords().subscribe(data => {
-      const wordData: CloudData[] = data["word-cloud"];
+      const wordData: CloudData[] = data['word-cloud'];
       this.data = wordData;
-      console.log(this.data);
     }
   );
   }
-
   onEnter(idtopic , value: string) {
-    this.value = value; console.log(this.value);
-    this.srv.update_topic_name(idtopic, value).subscribe();
+    this.srv.update_topic_name(idtopic, value).subscribe( d => {
+      this.ngOnInit();
+     }
+    );
   }
 
 }

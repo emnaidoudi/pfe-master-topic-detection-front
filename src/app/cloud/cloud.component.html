@@ -1,14 +1,20 @@
-<div *ngFor="let words of data">
-<h1>{{words[words.length-1]["assigned_name"]}}</h1>
+<div style="padding: 5%;    background: whitesmoke;">
+<div *ngFor="let words of data"  class="div-container" style="">
+<h3 class = "topic_name">{{words[words.length-1]["assigned_name"]}}</h3>
+
   <angular-tag-cloud
     [data]="words.slice(0,words.length-1)"
     [width]="options.width"
     [height]="options.height"
     [overflow]="options.overflow">
   </angular-tag-cloud>
-  <input #box (keyup.enter)="onEnter( words[words.length-1]['idtopic'],box.value)">
- </div>
 
+  <input #box (keyup.enter)="onEnter( words[words.length-1]['idtopic'],box.value)"
+         class="input-topic"
+         placeholder="Proposer un nom pour cette topic"  onfocus="this.placeholder = ''"
+         onblur="this.placeholder = 'Proposer un nom pour cette topic'">
+ </div>
+</div>
 
 <!--<angular-tag-cloud [config]="options" [data]="data"></angular-tag-cloud>-->
 
